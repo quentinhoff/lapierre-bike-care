@@ -148,9 +148,9 @@ const AddBike = () => {
                   className="form-input"
                 >
                   <option value="">Select wheel size</option>
-                  <option value="26\"">26"</option>
-                  <option value="27.5\"">27.5"</option>
-                  <option value="29\"">29"</option>
+                  <option value='26"'>26"</option>
+                  <option value='27.5"'>27.5"</option>
+                  <option value='29"'>29"</option>
                 </select>
               </div>
               
