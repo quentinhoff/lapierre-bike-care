@@ -29,6 +29,7 @@ export default {
                     red: '#E2231A',
                     dark: '#333333',
                     light: '#F8F8F8',
+                    blue: '#002E8A', // Bleu foncé de la référence
                 },
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
