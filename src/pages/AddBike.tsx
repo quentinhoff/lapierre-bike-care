@@ -63,7 +63,7 @@ const AddBike = () => {
         </div>
       ) : (
         <div>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {/* Bike photo */}
             <div className="flex justify-center">
               <div className="w-40 h-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center">

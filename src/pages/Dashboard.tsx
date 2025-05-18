@@ -50,24 +50,24 @@ const Dashboard = () => {
   return (
     <MobileLayout>
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-5">
         <div>
-          <h1 className="text-2xl font-bold">My Bikes</h1>
+          <h1 className="text-xl font-bold">My Bikes</h1>
           <p className="text-gray-600 text-sm">Manage your Lapierre fleet</p>
         </div>
         <Link
           to="/notifications"
           className="relative w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm"
         >
-          <Bell size={20} />
+          <Bell size={18} />
           <span className="absolute top-0 right-0 w-3 h-3 bg-lapierre-red rounded-full border-2 border-white"></span>
         </Link>
       </div>
       
       {/* Bikes List */}
-      <div className="mb-8">
+      <div className="mb-6">
         {bikes.map(bike => (
-          <Link key={bike.id} to={`/bike/${bike.id}`}>
+          <Link key={bike.id} to={`/bike/${bike.id}`} className="block">
             <BikeCard
               id={bike.id}
               model={bike.model}
@@ -82,16 +82,16 @@ const Dashboard = () => {
         
         <Link
           to="/add-bike"
-          className="flex items-center justify-center p-4 border-2 border-dashed border-gray-300 rounded-2xl text-gray-500 hover:border-lapierre-red hover:text-lapierre-red transition-colors"
+          className="flex items-center justify-center p-3 border-2 border-dashed border-gray-300 rounded-xl text-gray-500 hover:border-lapierre-red hover:text-lapierre-red transition-colors"
         >
-          <Plus size={24} className="mr-2" />
+          <Plus size={20} className="mr-2" />
           <span className="font-medium">Add New Bike</span>
         </Link>
       </div>
       
       {/* Maintenance Reminders */}
       <div>
-        <h2 className="text-lg font-semibold mb-3">Upcoming Maintenance</h2>
+        <h2 className="font-semibold text-lg mb-3">Upcoming Maintenance</h2>
         
         {reminders.map(reminder => (
           <ReminderCard

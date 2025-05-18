@@ -20,13 +20,13 @@ const ReminderCard: React.FC<ReminderCardProps> = ({
   const getPriorityStyles = () => {
     switch (priority) {
       case 'high':
-        return 'bg-red-100 text-red-700 border-red-200';
+        return 'bg-red-50 text-red-700 border-red-100';
       case 'medium':
-        return 'bg-yellow-100 text-yellow-700 border-yellow-200';
+        return 'bg-yellow-50 text-yellow-700 border-yellow-100';
       case 'low':
-        return 'bg-green-100 text-green-700 border-green-200';
+        return 'bg-green-50 text-green-700 border-green-100';
       default:
-        return 'bg-gray-100 text-gray-700 border-gray-200';
+        return 'bg-gray-50 text-gray-700 border-gray-100';
     }
   };
 
@@ -38,16 +38,16 @@ const ReminderCard: React.FC<ReminderCardProps> = ({
           <p className="text-sm mt-1">{bikeModel}</p>
         </div>
         <div className="flex items-center text-sm">
-          <Clock size={16} className="mr-1" />
+          <Clock size={14} className="mr-1" />
           <span>{dueDate}</span>
         </div>
       </div>
       
-      <div className="mt-3 flex justify-between">
+      <div className="mt-3 flex justify-end gap-2">
         <button className="bg-white rounded-full px-3 py-1 text-sm shadow-sm border border-gray-200">
           Postpone
         </button>
-        <button className="bg-white/50 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium">
+        <button className="bg-white/60 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium">
           Mark as Done
         </button>
       </div>

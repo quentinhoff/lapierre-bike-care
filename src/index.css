@@ -91,57 +91,26 @@
   }
   
   body {
-    @apply bg-lapierre-light text-foreground font-sans;
-  }
-  
-  /* Mobile app styling */
-  .mobile-container {
-    @apply max-w-md mx-auto min-h-screen relative overflow-hidden bg-lapierre-light;
-  }
-  
-  .mobile-header {
-    @apply sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-gray-200 px-4 py-3;
-  }
-  
-  .mobile-content {
-    @apply px-4 py-3 pb-20;
-  }
-  
-  .mobile-nav-bar {
-    @apply fixed bottom-0 left-0 right-0 z-10 bg-white border-t border-gray-200 flex justify-around items-center py-2 px-2 max-w-md mx-auto;
-  }
-  
-  .nav-item {
-    @apply flex flex-col items-center justify-center px-2 py-1 rounded-lg;
-  }
-  
-  .nav-item.active {
-    @apply text-lapierre-red;
+    @apply bg-gray-50 text-foreground font-sans;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-lapierre-red hover:bg-lapierre-red/90 text-white font-medium py-2 px-4 rounded-full transition-all;
+    @apply bg-lapierre-red hover:bg-lapierre-red/90 text-white font-medium py-2.5 px-4 rounded-full transition-all;
   }
   
   .btn-secondary {
-    @apply bg-white border border-gray-200 text-gray-800 font-medium py-2 px-4 rounded-full hover:bg-gray-50 transition-all;
-  }
-  
-  .bike-card {
-    @apply bg-white rounded-2xl shadow-md p-4 mb-4 border border-gray-100;
-  }
-  
-  .maintenance-card {
-    @apply bg-white rounded-2xl p-4 mb-3 border border-gray-200;
-  }
-  
-  .workshop-card {
-    @apply bg-white rounded-xl p-3 shadow-sm;
+    @apply bg-white border border-gray-200 text-gray-800 font-medium py-2.5 px-4 rounded-full hover:bg-gray-50 transition-all;
   }
   
   .form-input {
-    @apply w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-lapierre-red focus:ring-1 focus:ring-lapierre-red;
+    @apply w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-lapierre-red focus:ring-1 focus:ring-lapierre-red;
+  }
+}
+
+@layer utilities {
+  .animate-pulse-light {
+    @apply animate-[pulse_2s_infinite_ease-in-out];
   }
 }

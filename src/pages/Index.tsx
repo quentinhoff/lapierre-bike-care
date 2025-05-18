@@ -37,80 +37,78 @@ const Index = () => {
   
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="flex-1 flex flex-col">
-        {/* Logo */}
-        <div className="py-8 flex justify-center">
-          <div className="w-40 h-10 bg-lapierre-dark text-white flex items-center justify-center rounded-md">
-            <span className="font-bold">LAPIERRE CARE</span>
-          </div>
+      {/* Logo */}
+      <div className="py-8 flex justify-center">
+        <div className="bg-lapierre-red rounded-lg px-6 py-3">
+          <img src="/placeholder.svg" alt="Lapierre" className="h-8" />
         </div>
-        
-        {/* Onboarding Slides */}
-        <div className="flex-1 flex flex-col items-center justify-center px-6">
-          <div className="w-full max-w-md">
-            <div className="w-full aspect-square mb-6 flex items-center justify-center">
-              <img
-                src={slides[currentSlide].image}
-                alt={slides[currentSlide].title}
-                className="w-full max-h-full object-contain"
+      </div>
+      
+      {/* Onboarding Slides */}
+      <div className="flex-1 flex flex-col items-center justify-center px-6">
+        <div className="w-full max-w-md">
+          <div className="w-full aspect-square mb-6 flex items-center justify-center">
+            <img
+              src={slides[currentSlide].image}
+              alt={slides[currentSlide].title}
+              className="w-full max-h-full object-contain"
+            />
+          </div>
+          
+          <h2 className="text-2xl font-bold text-center mb-3">
+            {slides[currentSlide].title}
+          </h2>
+          <p className="text-center text-gray-600 mb-8">
+            {slides[currentSlide].description}
+          </p>
+          
+          <div className="flex justify-center space-x-2 mb-8">
+            {slides.map((_, index) => (
+              <div
+                key={index}
+                className={`w-2 h-2 rounded-full ${
+                  index === currentSlide
+                    ? 'bg-lapierre-red'
+                    : 'bg-gray-300'
+                }`}
               />
-            </div>
-            
-            <h2 className="text-2xl font-bold text-center mb-3">
-              {slides[currentSlide].title}
-            </h2>
-            <p className="text-center text-gray-600 mb-8">
-              {slides[currentSlide].description}
-            </p>
-            
-            <div className="flex justify-center space-x-2 mb-8">
-              {slides.map((_, index) => (
-                <div
-                  key={index}
-                  className={`w-2 h-2 rounded-full ${
-                    index === currentSlide
-                      ? 'bg-lapierre-red'
-                      : 'bg-gray-300'
-                  }`}
-                />
-              ))}
-            </div>
+            ))}
           </div>
         </div>
-        
-        {/* Action Buttons */}
-        <div className="px-6 py-8">
-          <div className="w-full max-w-md mx-auto">
-            {currentSlide < slides.length - 1 ? (
-              <>
-                <button
-                  onClick={handleNextSlide}
-                  className="w-full btn-primary mb-4 flex items-center justify-center"
-                >
-                  <span>Continue</span>
-                  <ArrowRight size={16} className="ml-1" />
-                </button>
-                <Link to="/login" className="block text-center text-gray-600 underline">
-                  Skip Introduction
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className="w-full btn-primary mb-4 block text-center"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/register"
-                  className="w-full btn-secondary block text-center"
-                >
-                  Create an Account
-                </Link>
-              </>
-            )}
-          </div>
+      </div>
+      
+      {/* Action Buttons */}
+      <div className="px-6 py-8">
+        <div className="w-full max-w-md mx-auto">
+          {currentSlide < slides.length - 1 ? (
+            <>
+              <button
+                onClick={handleNextSlide}
+                className="w-full bg-lapierre-red text-white rounded-full py-3 mb-4 flex items-center justify-center"
+              >
+                <span>Continue</span>
+                <ArrowRight size={16} className="ml-1" />
+              </button>
+              <Link to="/login" className="block text-center text-gray-600 underline">
+                Skip Introduction
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="w-full bg-lapierre-red text-white rounded-full py-3 mb-4 block text-center"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="w-full border border-gray-300 rounded-full py-3 block text-center"
+              >
+                Create an Account
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
