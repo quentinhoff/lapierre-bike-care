@@ -1,12 +1,13 @@
-
 import React, { useState } from 'react';
 import { Calendar, Plus, Bike } from 'lucide-react';
 import MobileLayout from '../components/Layout/MobileLayout';
 import ReminderCard from '../components/Maintenance/ReminderCard';
 import MaintenanceCard from '../components/Maintenance/MaintenanceCard';
+import ConsumableItem from '../components/Maintenance/ConsumableItem';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const MaintenanceLog = () => {
-  const [activeTab, setActiveTab] = useState<'upcoming' | 'history'>('upcoming');
+  const [activeTab, setActiveTab] = useState<'upcoming' | 'history' | 'consumables'>('upcoming');
   
   // Mock data for reminders
   const [reminders, setReminders] = useState([
@@ -66,6 +67,50 @@ const MaintenanceLog = () => {
     }
   ]);
   
+  // Mock data for consumables
+  const [consumables, setConsumables] = useState([
+    {
+      id: 'cons1',
+      name: 'Continental GP5000S TR Tires',
+      currentUsage: 2500,
+      recommendedChange: 4000,
+      unit: 'km',
+      bikeModel: 'Lapierre Zesty'
+    },
+    {
+      id: 'cons2',
+      name: 'SRAM Paceline Brake Discs',
+      currentUsage: 5200,
+      recommendedChange: 6000,
+      unit: 'km',
+      bikeModel: 'Lapierre Zesty'
+    },
+    {
+      id: 'cons3',
+      name: 'SRAM Force 12s Chain',
+      currentUsage: 1800,
+      recommendedChange: 2500,
+      unit: 'km',
+      bikeModel: 'Lapierre Spicy'
+    },
+    {
+      id: 'cons4',
+      name: 'Power Meter Battery',
+      currentUsage: 290,
+      recommendedChange: 300,
+      unit: 'hours',
+      bikeModel: 'Lapierre Zesty'
+    },
+    {
+      id: 'cons5',
+      name: 'Brake Pads',
+      currentUsage: 950,
+      recommendedChange: 1200,
+      unit: 'km',
+      bikeModel: 'Lapierre Spicy'
+    }
+  ]);
+  
   const [showBikeSelector, setShowBikeSelector] = useState(false);
   const [selectedBike, setSelectedBike] = useState<string | null>(null);
   
@@ -81,6 +126,10 @@ const MaintenanceLog = () => {
   const filteredReminders = selectedBike
     ? reminders.filter(item => item.bikeModel === bikes.find(b => b.id === selectedBike)?.model)
     : reminders;
+  
+  const filteredConsumables = selectedBike
+    ? consumables.filter(item => item.bikeModel === bikes.find(b => b.id === selectedBike)?.model)
+    : consumables;
   
   return (
     <MobileLayout title="Maintenance">
@@ -105,6 +154,16 @@ const MaintenanceLog = () => {
           onClick={() => setActiveTab('history')}
         >
           History
+        </button>
+        <button
+          className={`flex-1 py-3 text-center font-medium ${
+            activeTab === 'consumables'
+              ? 'text-lapierre-red border-b-2 border-lapierre-red'
+              : 'text-gray-500'
+          }`}
+          onClick={() => setActiveTab('consumables')}
+        >
+          Consumables
         </button>
       </div>
       
@@ -196,7 +255,7 @@ const MaintenanceLog = () => {
             <span>Add Reminder</span>
           </button>
         </div>
-      ) : (
+      ) : activeTab === 'history' ? (
         <div>
           <div className="space-y-3 mb-6">
             {filteredHistory.length > 0 ? (
@@ -227,6 +286,32 @@ const MaintenanceLog = () => {
           <button className="btn-primary w-full flex items-center justify-center">
             <Plus size={20} className="mr-2" />
             <span>Add Maintenance Record</span>
+          </button>
+        </div>
+      ) : (
+        <div>
+          <div className="space-y-3 mb-6">
+            {filteredConsumables.length > 0 ? (
+              filteredConsumables.map(consumable => (
+                <ConsumableItem
+                  key={consumable.id}
+                  name={consumable.name}
+                  currentUsage={consumable.currentUsage}
+                  recommendedChange={consumable.recommendedChange}
+                  unit={consumable.unit}
+                />
+              ))
+            ) : (
+              <div className="text-center py-8">
+                <Calendar size={48} className="mx-auto text-gray-300 mb-2" />
+                <p className="text-gray-500">No consumables tracked</p>
+              </div>
+            )}
+          </div>
+          
+          <button className="btn-primary w-full flex items-center justify-center">
+            <Plus size={20} className="mr-2" />
+            <span>Add Consumable</span>
           </button>
         </div>
       )}
