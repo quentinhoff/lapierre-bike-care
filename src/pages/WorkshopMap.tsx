@@ -4,7 +4,7 @@ import MobileLayout from '../components/Layout/MobileLayout';
 import WorkshopMap from '../components/Map/WorkshopMap';
 
 const Workshops = () => {
-  // Mock workshop data
+  // Mock workshop data with coordinates
   const [workshops, setWorkshops] = useState([
     {
       id: 'ws1',
@@ -13,7 +13,8 @@ const Workshops = () => {
       distance: '1.2 km',
       phone: '+33 1 23 45 67 89',
       hours: '9:00 - 18:00',
-      rating: 4.8
+      rating: 4.8,
+      coordinates: [2.3488, 48.8534] // Near center of Paris
     },
     {
       id: 'ws2',
@@ -22,7 +23,8 @@ const Workshops = () => {
       distance: '2.5 km',
       phone: '+33 4 56 78 90 12',
       hours: '10:00 - 19:00',
-      rating: 4.5
+      rating: 4.5,
+      coordinates: [2.3699, 48.8637] // East Paris
     },
     {
       id: 'ws3',
@@ -31,7 +33,8 @@ const Workshops = () => {
       distance: '3.7 km',
       phone: '+33 6 78 90 12 34',
       hours: '8:30 - 17:30',
-      rating: 4.2
+      rating: 4.2,
+      coordinates: [2.3300, 48.8800] // North Paris
     }
   ]);
   
@@ -67,7 +70,7 @@ const Workshops = () => {
                     <div>
                       <h3 className="font-medium">{workshop.name}</h3>
                       <p className="text-sm text-gray-600 mt-1">{workshop.address}</p>
-                      <p className="text-sm text-lapierre-red mt-1">{workshop.distance} away</p>
+                      <p className="text-sm text-primary mt-1">{workshop.distance} away</p>
                     </div>
                     <div className="bg-green-50 text-green-700 px-2 py-1 rounded-md text-sm font-medium">
                       ★ {workshop.rating}
