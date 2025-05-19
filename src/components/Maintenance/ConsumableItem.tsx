@@ -25,13 +25,19 @@ const ConsumableItem: React.FC<ConsumableItemProps> = ({
   const getStatusColor = () => {
     if (percentage <= 60) return "bg-blue-500"; // Good condition (blue)
     if (percentage <= 85) return "bg-orange-500"; // Medium wear (orange)
-    return "bg-red-500"; // Needs replacement (red)
+    return "bg-primary"; // Needs replacement (blue primary instead of red)
   };
   
   const getStatusText = () => {
     if (percentage <= 60) return "Good condition";
     if (percentage <= 85) return "Medium wear";
     return "Replacement recommended";
+  };
+  
+  const getStatusBadgeColor = () => {
+    if (percentage <= 60) return 'bg-blue-100 text-blue-700';
+    if (percentage <= 85) return 'bg-orange-100 text-orange-700';
+    return 'bg-primary/10 text-primary'; // Blue badge instead of red
   };
   
   const getRemainingText = () => {
@@ -46,11 +52,7 @@ const ConsumableItem: React.FC<ConsumableItemProps> = ({
     <div className="border rounded-lg p-4 mb-3">
       <div className="flex justify-between mb-2">
         <h4 className="font-medium">{name}</h4>
-        <span className={`text-xs px-2 py-1 rounded-full ${
-          percentage <= 60 ? 'bg-blue-100 text-blue-700' : 
-          percentage <= 85 ? 'bg-orange-100 text-orange-700' : 
-          'bg-red-100 text-red-700'
-        }`}>
+        <span className={`text-xs px-2 py-1 rounded-full ${getStatusBadgeColor()}`}>
           {getStatusText()}
         </span>
       </div>
