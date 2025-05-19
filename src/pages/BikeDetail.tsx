@@ -4,6 +4,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Calendar, Settings, ArrowRight, Download } from 'lucide-react';
 import MobileLayout from '../components/Layout/MobileLayout';
 import MaintenanceCard from '../components/Maintenance/MaintenanceCard';
+import { 
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Card, CardContent } from "@/components/ui/card";
 
 const BikeDetail = () => {
   const { id } = useParams();
@@ -22,6 +29,29 @@ const BikeDetail = () => {
     lastMaintenance: '02 Mar 2023',
     nextMaintenance: '15 Sep 2023',
     imageUrl: null,
+    specs: {
+      electricAssistance: "Non",
+      bottomBracket: "SRAM DUB Press Fit 86.5 Road",
+      frame: "Xelius SL disc thru axle UD Superlight carbon",
+      cassette: "SRAM XG 1270 10-33T 12s",
+      chain: "SRAM Force 12s",
+      handlebar: "Lapierre Combo UD carbon, -10°, 400mm/90mm (XS,S), 400mm/100mm (M), 420mm/110mm (L), 420mm/120mm (XL)",
+      collection: "2024",
+      rearDerailleur: "SRAM Force ETAP AXS Max, 12s",
+      frontDerailleur: "SRAM Force ETAP AXS Braze-On",
+      rotors: "SRAM Paceline 160mm front /140mm rear Center Lock",
+      fork: "Xelius SL disc thru axle UD Superlight carbon",
+      headset: "Acros integrated + Xelius Acros Spacer",
+      shifters: "SRAM Force ETAP AXS",
+      pedals: "VP-335 Clips&Strap",
+      crankset: "SRAM Force D2 Dub 48-35T 170mm (XS,S), 172,5mm (M,L), 175mm (XL) with POWERMETER",
+      tires: "Continental GP5000S TR Tubeless ready 28-622",
+      weight: "7.8 kg",
+      wheels: "Lapierre Road Disc Carbon 700x21c, 38mm height, Shimano driver, Tubeless Ready",
+      handlebarTape: "Lapierre Vexgel Tape",
+      saddle: "Fizik Argo Vento R5 140mm",
+      seatpost: "Lapierre carbon light, Ø: 27.2mm, L: 350mm"
+    },
     maintenanceHistory: [
       {
         id: 'maint1',
@@ -109,6 +139,145 @@ const BikeDetail = () => {
               <p>{bike.color}</p>
             </div>
           </div>
+        </div>
+        
+        {/* Technical Specifications */}
+        <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
+          <h2 className="text-lg font-semibold mb-3">Spécifications Techniques</h2>
+          
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="frame">
+              <AccordionTrigger className="text-sm font-medium">Cadre et Composants Principaux</AccordionTrigger>
+              <AccordionContent>
+                <Card className="border-none shadow-none">
+                  <CardContent className="p-0">
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Cadre: </span>
+                        <span>{bike.specs.frame}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Fourche: </span>
+                        <span>{bike.specs.fork}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Collection: </span>
+                        <span>{bike.specs.collection}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Poids: </span>
+                        <span>{bike.specs.weight}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Assistance Électrique: </span>
+                        <span>{bike.specs.electricAssistance}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="transmission">
+              <AccordionTrigger className="text-sm font-medium">Transmission</AccordionTrigger>
+              <AccordionContent>
+                <Card className="border-none shadow-none">
+                  <CardContent className="p-0">
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Boîtier de pédalier: </span>
+                        <span>{bike.specs.bottomBracket}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Cassette: </span>
+                        <span>{bike.specs.cassette}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Chaîne: </span>
+                        <span>{bike.specs.chain}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Dérailleur Arrière: </span>
+                        <span>{bike.specs.rearDerailleur}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Dérailleur avant: </span>
+                        <span>{bike.specs.frontDerailleur}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Levier de vitesses: </span>
+                        <span>{bike.specs.shifters}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Pédalier: </span>
+                        <span>{bike.specs.crankset}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Pédales: </span>
+                        <span>{bike.specs.pedals}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="wheels">
+              <AccordionTrigger className="text-sm font-medium">Roues et Freinage</AccordionTrigger>
+              <AccordionContent>
+                <Card className="border-none shadow-none">
+                  <CardContent className="p-0">
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Roues complètes: </span>
+                        <span>{bike.specs.wheels}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Pneus: </span>
+                        <span>{bike.specs.tires}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Disques - Rotors: </span>
+                        <span>{bike.specs.rotors}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="cockpit">
+              <AccordionTrigger className="text-sm font-medium">Cockpit et Confort</AccordionTrigger>
+              <AccordionContent>
+                <Card className="border-none shadow-none">
+                  <CardContent className="p-0">
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Cintre: </span>
+                        <span>{bike.specs.handlebar}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Jeu de direction: </span>
+                        <span>{bike.specs.headset}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Ruban cintre: </span>
+                        <span>{bike.specs.handlebarTape}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Selle: </span>
+                        <span>{bike.specs.saddle}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-700">Tige de selle: </span>
+                        <span>{bike.specs.seatpost}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
         
         {/* Maintenance Section */}
