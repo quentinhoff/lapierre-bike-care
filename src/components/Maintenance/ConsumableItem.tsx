@@ -23,9 +23,9 @@ const ConsumableItem: React.FC<ConsumableItemProps> = ({
   const percentage = calculatePercentage();
   
   const getStatusColor = () => {
-    if (percentage <= 60) return "bg-blue-500"; // Good condition (blue)
+    if (percentage <= 60) return "bg-lapierre-blue"; // Good condition (blue)
     if (percentage <= 85) return "bg-orange-500"; // Medium wear (orange)
-    return "bg-primary"; // Needs replacement (blue primary instead of red)
+    return "bg-lapierre-blue"; // Needs replacement (blue primary instead of red)
   };
   
   const getStatusText = () => {
@@ -35,9 +35,9 @@ const ConsumableItem: React.FC<ConsumableItemProps> = ({
   };
   
   const getStatusBadgeColor = () => {
-    if (percentage <= 60) return 'bg-blue-100 text-blue-700';
+    if (percentage <= 60) return 'bg-lapierre-blue/10 text-lapierre-blue';
     if (percentage <= 85) return 'bg-orange-100 text-orange-700';
-    return 'bg-primary/10 text-primary'; // Blue badge instead of red
+    return 'bg-lapierre-blue/10 text-lapierre-blue'; // Blue badge instead of red
   };
   
   const getRemainingText = () => {

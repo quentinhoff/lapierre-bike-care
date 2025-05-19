@@ -1,13 +1,15 @@
+
 import React, { useState } from 'react';
 import { Calendar, Plus, Bike } from 'lucide-react';
 import MobileLayout from '../components/Layout/MobileLayout';
 import ReminderCard from '../components/Maintenance/ReminderCard';
 import MaintenanceCard from '../components/Maintenance/MaintenanceCard';
 import ConsumableItem from '../components/Maintenance/ConsumableItem';
+import BikeInspection from '../components/Maintenance/BikeInspection';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const MaintenanceLog = () => {
-  const [activeTab, setActiveTab] = useState<'upcoming' | 'history' | 'consumables'>('upcoming');
+  const [activeTab, setActiveTab] = useState<'upcoming' | 'history' | 'consumables' | 'inspection'>('upcoming');
   
   // Mock data for reminders
   const [reminders, setReminders] = useState([
@@ -138,7 +140,7 @@ const MaintenanceLog = () => {
         <button
           className={`flex-1 py-3 text-center font-medium ${
             activeTab === 'upcoming'
-              ? 'text-lapierre-red border-b-2 border-lapierre-red'
+              ? 'text-lapierre-blue border-b-2 border-lapierre-blue'
               : 'text-gray-500'
           }`}
           onClick={() => setActiveTab('upcoming')}
@@ -148,7 +150,7 @@ const MaintenanceLog = () => {
         <button
           className={`flex-1 py-3 text-center font-medium ${
             activeTab === 'history'
-              ? 'text-lapierre-red border-b-2 border-lapierre-red'
+              ? 'text-lapierre-blue border-b-2 border-lapierre-blue'
               : 'text-gray-500'
           }`}
           onClick={() => setActiveTab('history')}
@@ -158,12 +160,22 @@ const MaintenanceLog = () => {
         <button
           className={`flex-1 py-3 text-center font-medium ${
             activeTab === 'consumables'
-              ? 'text-lapierre-red border-b-2 border-lapierre-red'
+              ? 'text-lapierre-blue border-b-2 border-lapierre-blue'
               : 'text-gray-500'
           }`}
           onClick={() => setActiveTab('consumables')}
         >
           Consumables
+        </button>
+        <button
+          className={`flex-1 py-3 text-center font-medium ${
+            activeTab === 'inspection'
+              ? 'text-lapierre-blue border-b-2 border-lapierre-blue'
+              : 'text-gray-500'
+          }`}
+          onClick={() => setActiveTab('inspection')}
+        >
+          Inspection
         </button>
       </div>
       
@@ -250,7 +262,7 @@ const MaintenanceLog = () => {
             )}
           </div>
           
-          <button className="btn-primary w-full flex items-center justify-center">
+          <button className="btn-primary w-full flex items-center justify-center bg-lapierre-blue">
             <Plus size={20} className="mr-2" />
             <span>Add Reminder</span>
           </button>
@@ -283,12 +295,12 @@ const MaintenanceLog = () => {
             )}
           </div>
           
-          <button className="btn-primary w-full flex items-center justify-center">
+          <button className="btn-primary w-full flex items-center justify-center bg-lapierre-blue">
             <Plus size={20} className="mr-2" />
             <span>Add Maintenance Record</span>
           </button>
         </div>
-      ) : (
+      ) : activeTab === 'consumables' ? (
         <div>
           <div className="space-y-3 mb-6">
             {filteredConsumables.length > 0 ? (
@@ -309,9 +321,18 @@ const MaintenanceLog = () => {
             )}
           </div>
           
-          <button className="btn-primary w-full flex items-center justify-center">
+          <button className="btn-primary w-full flex items-center justify-center bg-lapierre-blue">
             <Plus size={20} className="mr-2" />
             <span>Add Consumable</span>
+          </button>
+        </div>
+      ) : (
+        <div>
+          <BikeInspection />
+          
+          <button className="btn-primary w-full flex items-center justify-center bg-lapierre-blue">
+            <Plus size={20} className="mr-2" />
+            <span>Nouvelle inspection</span>
           </button>
         </div>
       )}
