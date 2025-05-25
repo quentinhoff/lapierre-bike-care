@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
+import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import BikeDetail from "./pages/BikeDetail";
 import AddBike from "./pages/AddBike";
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/bike/:id" element={<BikeDetail />} />
           <Route path="/add-bike" element={<AddBike />} />

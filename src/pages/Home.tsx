@@ -1,0 +1,207 @@
+
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Calendar, ChevronRight, Bike, Bell } from 'lucide-react';
+import MobileLayout from '../components/Layout/MobileLayout';
+
+const Home = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Mock data based on the images
+  const mainBike = {
+    id: 'bike1',
+    name: 'Mon Vélo Principal',
+    model: 'Lapierre Overvolt AM 7.5.6',
+    nextRevision: '12 avril 2025',
+    battery: 80,
+    tires: 'OK',
+    imageUrl: '/lovable-uploads/8fe220d7-80e5-4542-b601-00fc1e7d5497.png'
+  };
+
+  const lastRevision = {
+    date: '12 avril 2025',
+    type: 'Dernière révision'
+  };
+
+  const serviceHistory = [
+    {
+      id: 1,
+      type: 'Révision annuelle',
+      date: '12 avril 2025',
+      icon: Calendar
+    },
+    {
+      id: 2,
+      type: 'Réparation',
+      date: '02 décembre 2024',
+      icon: Calendar
+    },
+    {
+      id: 3,
+      type: 'Révision annuelle',
+      date: '12 avril 2024',
+      icon: Calendar
+    },
+    {
+      id: 4,
+      type: 'Inspection',
+      date: '05 février 2024',
+      icon: Calendar
+    }
+  ];
+
+  const bikes = [
+    {
+      id: 'bike1',
+      model: 'Lapierre Overvolt AM 7.6'
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section with Parallax */}
+      <div className="relative h-80 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${mainBike.imageUrl})`,
+            transform: `translateY(${scrollY * 0.5}px)`
+          }}
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40" />
+        
+        {/* Header */}
+        <div className="relative z-10 flex justify-between items-center p-4 pt-8">
+          <div className="bg-primary rounded-lg px-4 py-2">
+            <span className="text-white font-bold text-lg">LAPIERRE CARE</span>
+          </div>
+          <button className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm">
+            <Bell size={18} />
+          </button>
+        </div>
+      </div>
+
+      {/* Last Revision Card */}
+      <div className="px-4 -mt-20 relative z-20">
+        <div className="bg-white rounded-xl p-4 shadow-lg mb-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <div className="w-3 h-3 bg-gray-300 rounded-full mr-3"></div>
+              <div>
+                <h3 className="font-medium text-gray-900">{lastRevision.type}</h3>
+                <p className="text-gray-600 text-sm">{lastRevision.date}</p>
+              </div>
+            </div>
+            <ChevronRight size={20} className="text-gray-400" />
+          </div>
+        </div>
+      </div>
+
+      {/* Main Bike Card */}
+      <div className="px-4 mb-6">
+        <div className="bg-white rounded-xl p-4 shadow-sm">
+          <div className="flex items-center mb-4">
+            <Bike size={24} className="text-primary mr-3" />
+            <div className="flex-1">
+              <h3 className="font-medium text-gray-900">{mainBike.name}</h3>
+              <p className="text-gray-600 text-sm">{mainBike.model}</p>
+            </div>
+          </div>
+          
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-600">Prochaine révision : {mainBike.nextRevision}</span>
+            </div>
+            
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-600">Batterie : {mainBike.battery}%</span>
+              <span className="text-sm text-gray-600">Pneus : {mainBike.tires}</span>
+            </div>
+          </div>
+          
+          <div className="flex space-x-3 mt-4">
+            <Link 
+              to={`/bike/${mainBike.id}`}
+              className="flex-1 bg-gray-100 text-gray-700 text-center py-2 rounded-lg text-sm font-medium"
+            >
+              Voir le détail
+            </Link>
+            <Link 
+              to="/workshops"
+              className="flex-1 bg-primary text-white text-center py-2 rounded-lg text-sm font-medium"
+            >
+              Planifier un entretien
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Service History Section */}
+      <div className="px-4 mb-6">
+        <h2 className="text-lg font-semibold mb-3">Historique des services</h2>
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+          {serviceHistory.map((service, index) => (
+            <div key={service.id} className={`p-4 flex items-center justify-between ${index !== serviceHistory.length - 1 ? 'border-b border-gray-100' : ''}`}>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-3">
+                  <service.icon size={20} className="text-gray-600" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-900">{service.type}</h4>
+                  <p className="text-gray-600 text-sm">{service.date}</p>
+                </div>
+              </div>
+              <ChevronRight size={20} className="text-gray-400" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* My Bikes Section */}
+      <div className="px-4 mb-20">
+        <h2 className="text-lg font-semibold mb-3">Mes Vélos</h2>
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+          {bikes.map((bike, index) => (
+            <Link 
+              key={bike.id}
+              to={`/bike/${bike.id}`}
+              className={`p-4 flex items-center justify-between ${index !== bikes.length - 1 ? 'border-b border-gray-100' : ''}`}
+            >
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-3">
+                  <Bike size={20} className="text-gray-600" />
+                </div>
+                <span className="font-medium text-gray-900">{bike.model}</span>
+              </div>
+              <ChevronRight size={20} className="text-gray-400" />
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Navigation */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-primary border-t border-primary/30 flex justify-around items-center py-3 px-2 z-10 shadow-lg">
+        <Link to="/home" className="flex flex-col items-center justify-center px-3 py-1 text-white">
+          <Bike size={20} />
+          <span className="text-xs mt-1">Home</span>
+        </Link>
+        <Link to="/maintenance" className="flex flex-col items-center justify-center px-3 py-1 text-primary-foreground/70">
+          <Calendar size={20} />
+          <span className="text-xs mt-1">Maintenance</span>
+        </Link>
+        <Link to="/workshops" className="flex flex-col items-center justify-center px-3 py-1 text-primary-foreground/70">
+          <Calendar size={20} />
+          <span className="text-xs mt-1">Workshops</span>
+        </Link>
+      </nav>
+    </div>
+  );
+};
+
+export default Home;
