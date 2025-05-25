@@ -14,7 +14,7 @@ const Workshops = () => {
       phone: '+33 1 23 45 67 89',
       hours: '9:00 - 18:00',
       rating: 4.8,
-      coordinates: [2.3488, 48.8534] // Near center of Paris
+      coordinates: [2.3488, 48.8534] as [number, number] // Near center of Paris
     },
     {
       id: 'ws2',
@@ -24,7 +24,7 @@ const Workshops = () => {
       phone: '+33 4 56 78 90 12',
       hours: '10:00 - 19:00',
       rating: 4.5,
-      coordinates: [2.3699, 48.8637] // East Paris
+      coordinates: [2.3699, 48.8637] as [number, number] // East Paris
     },
     {
       id: 'ws3',
@@ -34,7 +34,7 @@ const Workshops = () => {
       phone: '+33 6 78 90 12 34',
       hours: '8:30 - 17:30',
       rating: 4.2,
-      coordinates: [2.3300, 48.8800] // North Paris
+      coordinates: [2.3300, 48.8800] as [number, number] // North Paris
     }
   ]);
   

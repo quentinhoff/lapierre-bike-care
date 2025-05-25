@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Calendar, Plus, Bike } from 'lucide-react';
 import MobileLayout from '../components/Layout/MobileLayout';
@@ -6,10 +5,11 @@ import ReminderCard from '../components/Maintenance/ReminderCard';
 import MaintenanceCard from '../components/Maintenance/MaintenanceCard';
 import ConsumableItem from '../components/Maintenance/ConsumableItem';
 import BikeInspection from '../components/Maintenance/BikeInspection';
+import BikeAnalysis from '../components/Maintenance/BikeAnalysis';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const MaintenanceLog = () => {
-  const [activeTab, setActiveTab] = useState<'upcoming' | 'history' | 'consumables' | 'inspection'>('upcoming');
+  const [activeTab, setActiveTab] = useState<'upcoming' | 'history' | 'analysis'>('upcoming');
   
   // Mock data for reminders
   const [reminders, setReminders] = useState([
@@ -159,23 +159,13 @@ const MaintenanceLog = () => {
         </button>
         <button
           className={`flex-1 py-3 text-center font-medium ${
-            activeTab === 'consumables'
+            activeTab === 'analysis'
               ? 'text-lapierre-blue border-b-2 border-lapierre-blue'
               : 'text-gray-500'
           }`}
-          onClick={() => setActiveTab('consumables')}
+          onClick={() => setActiveTab('analysis')}
         >
-          Consumables
-        </button>
-        <button
-          className={`flex-1 py-3 text-center font-medium ${
-            activeTab === 'inspection'
-              ? 'text-lapierre-blue border-b-2 border-lapierre-blue'
-              : 'text-gray-500'
-          }`}
-          onClick={() => setActiveTab('inspection')}
-        >
-          Inspection
+          Analysis
         </button>
       </div>
       
@@ -300,39 +290,13 @@ const MaintenanceLog = () => {
             <span>Add Maintenance Record</span>
           </button>
         </div>
-      ) : activeTab === 'consumables' ? (
-        <div>
-          <div className="space-y-3 mb-6">
-            {filteredConsumables.length > 0 ? (
-              filteredConsumables.map(consumable => (
-                <ConsumableItem
-                  key={consumable.id}
-                  name={consumable.name}
-                  currentUsage={consumable.currentUsage}
-                  recommendedChange={consumable.recommendedChange}
-                  unit={consumable.unit}
-                />
-              ))
-            ) : (
-              <div className="text-center py-8">
-                <Calendar size={48} className="mx-auto text-gray-300 mb-2" />
-                <p className="text-gray-500">No consumables tracked</p>
-              </div>
-            )}
-          </div>
-          
-          <button className="btn-primary w-full flex items-center justify-center bg-lapierre-blue">
-            <Plus size={20} className="mr-2" />
-            <span>Add Consumable</span>
-          </button>
-        </div>
       ) : (
         <div>
-          <BikeInspection />
+          <BikeAnalysis />
           
-          <button className="btn-primary w-full flex items-center justify-center bg-lapierre-blue">
+          <button className="btn-primary w-full flex items-center justify-center bg-lapierre-blue mt-6">
             <Plus size={20} className="mr-2" />
-            <span>Nouvelle inspection</span>
+            <span>Nouvelle analyse</span>
           </button>
         </div>
       )}
