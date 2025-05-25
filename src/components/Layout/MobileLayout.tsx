@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Bike, Calendar, MapPin, Settings, User } from 'lucide-react';
+import { Bike, Calendar, MapPin, Settings, User, Home } from 'lucide-react';
 
 interface MobileLayoutProps {
   title?: string;
@@ -40,6 +40,10 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({
       </main>
       
       <nav className="fixed bottom-0 left-0 right-0 bg-primary border-t border-primary/30 flex justify-around items-center py-3 px-2 z-10 shadow-lg">
+        <Link to="/home" className={`flex flex-col items-center justify-center px-3 py-1 ${path === '/home' ? 'text-white' : 'text-primary-foreground/70'}`}>
+          <Home size={20} />
+          <span className="text-xs mt-1">Home</span>
+        </Link>
         <Link to="/dashboard" className={`flex flex-col items-center justify-center px-3 py-1 ${path === '/dashboard' ? 'text-white' : 'text-primary-foreground/70'}`}>
           <Bike size={20} />
           <span className="text-xs mt-1">Bikes</span>
@@ -55,10 +59,6 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({
         <Link to="/profile" className={`flex flex-col items-center justify-center px-3 py-1 ${path === '/profile' ? 'text-white' : 'text-primary-foreground/70'}`}>
           <User size={20} />
           <span className="text-xs mt-1">Profile</span>
-        </Link>
-        <Link to="/settings" className={`flex flex-col items-center justify-center px-3 py-1 ${path === '/settings' ? 'text-white' : 'text-primary-foreground/70'}`}>
-          <Settings size={20} />
-          <span className="text-xs mt-1">Settings</span>
         </Link>
       </nav>
     </div>
