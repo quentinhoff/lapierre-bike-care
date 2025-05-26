@@ -39,26 +39,30 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({
         {children}
       </main>
       
-      <nav className="fixed bottom-0 left-0 right-0 bg-primary border-t border-primary/30 flex justify-around items-center py-3 px-2 z-10 shadow-lg">
-        <Link to="/home" className={`flex flex-col items-center justify-center px-3 py-1 ${path === '/home' ? 'text-white' : 'text-primary-foreground/70'}`}>
-          <Home size={20} />
+      <nav className="fixed bottom-0 left-0 right-0 bg-primary border-t border-primary/30 flex justify-around items-center py-2 px-1 z-10 shadow-lg">
+        <Link to="/home" className={`flex flex-col items-center justify-center px-2 py-1 ${path === '/home' ? 'text-white' : 'text-primary-foreground/70'}`}>
+          <Home size={18} />
           <span className="text-xs mt-1">Home</span>
         </Link>
-        <Link to="/dashboard" className={`flex flex-col items-center justify-center px-3 py-1 ${path === '/dashboard' ? 'text-white' : 'text-primary-foreground/70'}`}>
-          <Bike size={20} />
+        <Link to="/dashboard" className={`flex flex-col items-center justify-center px-2 py-1 ${path === '/dashboard' ? 'text-white' : 'text-primary-foreground/70'}`}>
+          <Bike size={18} />
           <span className="text-xs mt-1">Bikes</span>
         </Link>
-        <Link to="/maintenance" className={`flex flex-col items-center justify-center px-3 py-1 ${path === '/maintenance' ? 'text-white' : 'text-primary-foreground/70'}`}>
-          <Calendar size={20} />
+        <Link to="/maintenance" className={`flex flex-col items-center justify-center px-2 py-1 ${path === '/maintenance' ? 'text-white' : 'text-primary-foreground/70'}`}>
+          <Calendar size={18} />
           <span className="text-xs mt-1">Maintenance</span>
         </Link>
-        <Link to="/workshops" className={`flex flex-col items-center justify-center px-3 py-1 ${path === '/workshops' ? 'text-white' : 'text-primary-foreground/70'}`}>
-          <MapPin size={20} />
+        <Link to="/workshops" className={`flex flex-col items-center justify-center px-2 py-1 ${path === '/workshops' ? 'text-white' : 'text-primary-foreground/70'}`}>
+          <MapPin size={18} />
           <span className="text-xs mt-1">Workshops</span>
         </Link>
-        <Link to="/profile" className={`flex flex-col items-center justify-center px-3 py-1 ${path === '/profile' ? 'text-white' : 'text-primary-foreground/70'}`}>
-          <User size={20} />
+        <Link to="/profile" className={`flex flex-col items-center justify-center px-2 py-1 ${path === '/profile' ? 'text-white' : 'text-primary-foreground/70'}`}>
+          <User size={18} />
           <span className="text-xs mt-1">Profile</span>
+        </Link>
+        <Link to="/settings" className={`flex flex-col items-center justify-center px-2 py-1 ${path === '/settings' ? 'text-white' : 'text-primary-foreground/70'}`}>
+          <Settings size={18} />
+          <span className="text-xs mt-1">Settings</span>
         </Link>
       </nav>
     </div>

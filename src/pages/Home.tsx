@@ -64,9 +64,9 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <MobileLayout>
       {/* Hero Section with Parallax */}
-      <div className="relative h-80 overflow-hidden">
+      <div className="relative h-80 overflow-hidden -mx-4 -mt-4">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -88,8 +88,8 @@ const Home = () => {
       </div>
 
       {/* Last Revision Card */}
-      <div className="px-4 -mt-20 relative z-20">
-        <div className="bg-white rounded-xl p-4 shadow-lg mb-6">
+      <div className="-mt-20 relative z-20 mb-6">
+        <div className="bg-white rounded-xl p-4 shadow-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <div className="w-3 h-3 bg-gray-300 rounded-full mr-3"></div>
@@ -104,7 +104,7 @@ const Home = () => {
       </div>
 
       {/* Main Bike Card */}
-      <div className="px-4 mb-6">
+      <div className="mb-6">
         <div className="bg-white rounded-xl p-4 shadow-sm">
           <div className="flex items-center mb-4">
             <Bike size={24} className="text-primary mr-3" />
@@ -143,7 +143,7 @@ const Home = () => {
       </div>
 
       {/* Service History Section */}
-      <div className="px-4 mb-6">
+      <div className="mb-6">
         <h2 className="text-lg font-semibold mb-3">Historique des services</h2>
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
           {serviceHistory.map((service, index) => (
@@ -164,7 +164,7 @@ const Home = () => {
       </div>
 
       {/* My Bikes Section */}
-      <div className="px-4 mb-20">
+      <div className="mb-6">
         <h2 className="text-lg font-semibold mb-3">Mes Vélos</h2>
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
           {bikes.map((bike, index) => (
@@ -184,23 +184,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-primary border-t border-primary/30 flex justify-around items-center py-3 px-2 z-10 shadow-lg">
-        <Link to="/home" className="flex flex-col items-center justify-center px-3 py-1 text-white">
-          <Bike size={20} />
-          <span className="text-xs mt-1">Home</span>
-        </Link>
-        <Link to="/maintenance" className="flex flex-col items-center justify-center px-3 py-1 text-primary-foreground/70">
-          <Calendar size={20} />
-          <span className="text-xs mt-1">Maintenance</span>
-        </Link>
-        <Link to="/workshops" className="flex flex-col items-center justify-center px-3 py-1 text-primary-foreground/70">
-          <Calendar size={20} />
-          <span className="text-xs mt-1">Workshops</span>
-        </Link>
-      </nav>
-    </div>
+    </MobileLayout>
   );
 };
 
