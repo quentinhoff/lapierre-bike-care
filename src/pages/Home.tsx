@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, ChevronRight, Bike, Bell } from 'lucide-react';
@@ -21,7 +20,7 @@ const Home = () => {
     nextRevision: '12 avril 2025',
     battery: 80,
     tires: 'OK',
-    imageUrl: '/lovable-uploads/8fe220d7-80e5-4542-b601-00fc1e7d5497.png'
+    imageUrl: '/lovable-uploads/ce4816f3-3b04-4a83-a577-8134667dd28d.png'
   };
 
   const lastRevision = {
@@ -89,13 +88,13 @@ const Home = () => {
 
       {/* Last Revision Card */}
       <div className="-mt-20 relative z-20 mb-6">
-        <div className="bg-white rounded-xl p-4 shadow-lg">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <div className="w-3 h-3 bg-gray-300 rounded-full mr-3"></div>
               <div>
-                <h3 className="font-medium text-gray-900">{lastRevision.type}</h3>
-                <p className="text-gray-600 text-sm">{lastRevision.date}</p>
+                <h3 className="font-medium text-gray-900 dark:text-white">{lastRevision.type}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">{lastRevision.date}</p>
               </div>
             </div>
             <ChevronRight size={20} className="text-gray-400" />
@@ -105,35 +104,35 @@ const Home = () => {
 
       {/* Main Bike Card */}
       <div className="mb-6">
-        <div className="bg-white rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center mb-4">
             <Bike size={24} className="text-primary mr-3" />
             <div className="flex-1">
-              <h3 className="font-medium text-gray-900">{mainBike.name}</h3>
-              <p className="text-gray-600 text-sm">{mainBike.model}</p>
+              <h3 className="font-medium text-gray-900 dark:text-white">{mainBike.name}</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">{mainBike.model}</p>
             </div>
           </div>
           
           <div className="space-y-3">
             <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-600">Prochaine révision : {mainBike.nextRevision}</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">Prochaine révision : {mainBike.nextRevision}</span>
             </div>
             
             <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-600">Batterie : {mainBike.battery}%</span>
-              <span className="text-sm text-gray-600">Pneus : {mainBike.tires}</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">Batterie : {mainBike.battery}%</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">Pneus : {mainBike.tires}</span>
             </div>
           </div>
           
           <div className="flex space-x-3 mt-4">
             <Link 
               to={`/bike/${mainBike.id}`}
-              className="flex-1 bg-gray-100 text-gray-700 text-center py-2 rounded-lg text-sm font-medium"
+              className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-center py-2 rounded-lg text-sm font-medium"
             >
               Voir le détail
             </Link>
             <Link 
-              to="/workshops"
+              to="/planning"
               className="flex-1 bg-primary text-white text-center py-2 rounded-lg text-sm font-medium"
             >
               Planifier un entretien
@@ -144,17 +143,17 @@ const Home = () => {
 
       {/* Service History Section */}
       <div className="mb-6">
-        <h2 className="text-lg font-semibold mb-3">Historique des services</h2>
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+        <h2 className="text-lg font-semibold mb-3 dark:text-white">Historique des services</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
           {serviceHistory.map((service, index) => (
-            <div key={service.id} className={`p-4 flex items-center justify-between ${index !== serviceHistory.length - 1 ? 'border-b border-gray-100' : ''}`}>
+            <div key={service.id} className={`p-4 flex items-center justify-between ${index !== serviceHistory.length - 1 ? 'border-b border-gray-100 dark:border-gray-700' : ''}`}>
               <div className="flex items-center">
-                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-3">
-                  <service.icon size={20} className="text-gray-600" />
+                <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mr-3">
+                  <service.icon size={20} className="text-gray-600 dark:text-gray-400" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900">{service.type}</h4>
-                  <p className="text-gray-600 text-sm">{service.date}</p>
+                  <h4 className="font-medium text-gray-900 dark:text-white">{service.type}</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">{service.date}</p>
                 </div>
               </div>
               <ChevronRight size={20} className="text-gray-400" />
@@ -165,19 +164,19 @@ const Home = () => {
 
       {/* My Bikes Section */}
       <div className="mb-6">
-        <h2 className="text-lg font-semibold mb-3">Mes Vélos</h2>
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+        <h2 className="text-lg font-semibold mb-3 dark:text-white">Mes Vélos</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
           {bikes.map((bike, index) => (
             <Link 
               key={bike.id}
               to={`/bike/${bike.id}`}
-              className={`p-4 flex items-center justify-between ${index !== bikes.length - 1 ? 'border-b border-gray-100' : ''}`}
+              className={`p-4 flex items-center justify-between ${index !== bikes.length - 1 ? 'border-b border-gray-100 dark:border-gray-700' : ''}`}
             >
               <div className="flex items-center">
-                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-3">
-                  <Bike size={20} className="text-gray-600" />
+                <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mr-3">
+                  <Bike size={20} className="text-gray-600 dark:text-gray-400" />
                 </div>
-                <span className="font-medium text-gray-900">{bike.model}</span>
+                <span className="font-medium text-gray-900 dark:text-white">{bike.model}</span>
               </div>
               <ChevronRight size={20} className="text-gray-400" />
             </Link>
