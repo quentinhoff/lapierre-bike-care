@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Calendar, Settings, ArrowRight, Download } from 'lucide-react';
@@ -19,16 +18,16 @@ const BikeDetail = () => {
   // Mock bike data
   const [bike] = useState({
     id: id,
-    model: 'Lapierre Zesty',
+    model: 'Lapierre Xelius SL 8.0 AXS 2024',
     serialNumber: 'LP20220001',
     purchaseDate: '15 Apr 2022',
     purchaseLocation: 'Bike City Store',
-    color: 'Blue / Orange',
+    color: 'White / Black',
     size: 'Large',
-    wheelSize: '29"',
+    wheelSize: '700c',
     lastMaintenance: '02 Mar 2023',
     nextMaintenance: '15 Sep 2023',
-    imageUrl: null,
+    imageUrl: '/lovable-uploads/fb9c4f6c-f434-4917-b558-fc6ef903b6e5.png',
     specs: {
       electricAssistance: "Non",
       bottomBracket: "SRAM DUB Press Fit 86.5 Road",

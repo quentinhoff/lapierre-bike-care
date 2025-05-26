@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
@@ -10,8 +9,8 @@ const Login = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     // In a real app, we would call an authentication service
-    // For demo purposes, let's redirect to the dashboard
-    window.location.href = '/dashboard';
+    // For demo purposes, let's redirect to the home page
+    window.location.href = '/home';
   };
   
   return (

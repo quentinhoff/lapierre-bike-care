@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bell, Plus } from 'lucide-react';
@@ -11,21 +10,21 @@ const Dashboard = () => {
   const [bikes, setBikes] = useState([
     {
       id: 'bike1',
-      model: 'Lapierre Zesty',
+      model: 'Lapierre Xelius SL 8.0 AXS 2024',
       serialNumber: 'LP20220001',
       purchaseDate: '15 Apr 2022',
       lastMaintenance: '02 Mar 2023',
       nextMaintenance: '15 Sep 2023',
-      imageUrl: null
+      imageUrl: '/lovable-uploads/fb9c4f6c-f434-4917-b558-fc6ef903b6e5.png'
     },
     {
       id: 'bike2',
-      model: 'Lapierre Spicy',
+      model: 'Lapierre Spicy CF 6.9 2025',
       serialNumber: 'LP20210052',
       purchaseDate: '10 Jun 2021',
       lastMaintenance: '23 Jan 2023',
       nextMaintenance: '23 Jul 2023',
-      imageUrl: null
+      imageUrl: '/lovable-uploads/370693c0-31c8-420f-b4ec-d22ad00f4644.png'
     }
   ]);
   
@@ -33,14 +32,14 @@ const Dashboard = () => {
   const [reminders, setReminders] = useState([
     {
       id: 'rem1',
-      bikeModel: 'Lapierre Zesty',
+      bikeModel: 'Lapierre Xelius SL 8.0 AXS 2024',
       maintenanceType: 'Fork Service',
       dueDate: 'In 2 days',
       priority: 'high'
     },
     {
       id: 'rem2',
-      bikeModel: 'Lapierre Spicy',
+      bikeModel: 'Lapierre Spicy CF 6.9 2025',
       maintenanceType: 'Chain Lubrication',
       dueDate: 'Overdue by 3 days',
       priority: 'medium'

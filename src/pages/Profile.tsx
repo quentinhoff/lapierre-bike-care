@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { User, Mail, MapPin } from 'lucide-react';
 import MobileLayout from '../components/Layout/MobileLayout';
@@ -15,21 +14,21 @@ const Profile = () => {
     bikes: [
       {
         id: 'bike1',
-        model: 'Lapierre Zesty',
+        model: 'Lapierre Xelius SL 8.0 AXS 2024',
         serialNumber: 'LP20220001',
         purchaseDate: '15 Apr 2022',
         lastMaintenance: '02 Mar 2023',
         nextMaintenance: '15 Sep 2023',
-        imageUrl: null
+        imageUrl: '/lovable-uploads/fb9c4f6c-f434-4917-b558-fc6ef903b6e5.png'
       },
       {
         id: 'bike2',
-        model: 'Lapierre Spicy',
+        model: 'Lapierre Spicy CF 6.9 2025',
         serialNumber: 'LP20210052',
         purchaseDate: '10 Jun 2021',
         lastMaintenance: '23 Jan 2023',
         nextMaintenance: '23 Jul 2023',
-        imageUrl: null
+        imageUrl: '/lovable-uploads/370693c0-31c8-420f-b4ec-d22ad00f4644.png'
       }
     ],
     stats: {

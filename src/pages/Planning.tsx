@@ -165,14 +165,14 @@ const Planning = () => {
           </div>
         </div>
 
-        {/* Workshop Info */}
+        {/* Workshop Info avec vraies coordonnées */}
         <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-4">
-          <h4 className="font-medium mb-2 dark:text-white">Atelier Lapierre Paris</h4>
+          <h4 className="font-medium mb-2 dark:text-white">Cycles Laurent - Atelier Lapierre Officiel</h4>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            123 Rue de la République, 75001 Paris
+            45 Avenue de la République, 75011 Paris
           </p>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            Tél : 01 23 45 67 89
+            Tél : 01 43 79 61 24
           </p>
         </div>
 
