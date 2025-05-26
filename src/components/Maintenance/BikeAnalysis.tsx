@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { AlertTriangle, TrendingUp, DollarSign } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
@@ -21,57 +22,45 @@ interface ComponentPoint {
 const BikeAnalysis: React.FC = () => {
   const [componentPoints, setComponentPoints] = useState<ComponentPoint[]>([
     { 
-      id: 'handlebar', 
-      x: 15, 
-      y: 25, 
-      name: 'Guidon',
-      currentUsage: 8500,
-      recommendedChange: 15000,
-      unit: 'km',
-      condition: 'good',
-      repairCost: 85,
-      description: 'Guidon en excellent état'
-    },
-    { 
-      id: 'brake-levers', 
-      x: 18, 
-      y: 28, 
-      name: 'Leviers de frein',
-      currentUsage: 950,
-      recommendedChange: 12000,
-      unit: 'km',
-      condition: 'good',
-      repairCost: 120,
-      description: 'Leviers en bon état de fonctionnement'
-    },
-    { 
-      id: 'shift-levers', 
-      x: 20, 
-      y: 32, 
-      name: 'Leviers de vitesse',
-      currentUsage: 2800,
-      recommendedChange: 10000,
+      id: 'chain', 
+      x: 55, 
+      y: 65, 
+      name: 'Chaîne SRAM Force 12s',
+      currentUsage: 1800,
+      recommendedChange: 2500,
       unit: 'km',
       condition: 'medium',
-      repairCost: 180,
-      description: 'Léger jeu détecté dans les leviers'
+      repairCost: 120,
+      description: 'Usure normale de la chaîne'
     },
     { 
-      id: 'saddle', 
-      x: 65, 
-      y: 15, 
-      name: 'Selle',
-      currentUsage: 6500,
-      recommendedChange: 8000,
+      id: 'front-brake', 
+      x: 20, 
+      y: 35, 
+      name: 'Plaquettes de frein avant',
+      currentUsage: 950,
+      recommendedChange: 1200,
+      unit: 'km',
+      condition: 'good',
+      repairCost: 45,
+      description: 'Plaquettes en bon état'
+    },
+    { 
+      id: 'rear-brake', 
+      x: 85, 
+      y: 35, 
+      name: 'Plaquettes de frein arrière',
+      currentUsage: 1100,
+      recommendedChange: 1200,
       unit: 'km',
       condition: 'warning',
-      repairCost: 95,
-      description: 'Usure visible sur la selle'
+      repairCost: 45,
+      description: 'Remplacement bientôt nécessaire'
     },
     { 
       id: 'front-tire', 
       x: 15, 
-      y: 75, 
+      y: 50, 
       name: 'Pneu avant Continental GP5000S TR',
       currentUsage: 3500,
       recommendedChange: 4000,
@@ -82,8 +71,8 @@ const BikeAnalysis: React.FC = () => {
     },
     { 
       id: 'rear-tire', 
-      x: 75, 
-      y: 75, 
+      x: 85, 
+      y: 50, 
       name: 'Pneu arrière Continental GP5000S TR',
       currentUsage: 3800,
       recommendedChange: 4000,
@@ -93,70 +82,10 @@ const BikeAnalysis: React.FC = () => {
       description: 'Remplacement urgent recommandé'
     },
     { 
-      id: 'front-wheel', 
-      x: 15, 
-      y: 65, 
-      name: 'Roue avant',
-      currentUsage: 8500,
-      recommendedChange: 15000,
-      unit: 'km',
-      condition: 'good',
-      repairCost: 45,
-      description: 'Roue en bon état'
-    },
-    { 
-      id: 'rear-wheel', 
-      x: 75, 
-      y: 65, 
-      name: 'Roue arrière',
-      currentUsage: 8200,
-      recommendedChange: 15000,
-      unit: 'km',
-      condition: 'good',
-      repairCost: 45,
-      description: 'Roue correctement montée'
-    },
-    { 
-      id: 'front-brake', 
-      x: 12, 
-      y: 60, 
-      name: 'Frein avant',
-      currentUsage: 5200,
-      recommendedChange: 6000,
-      unit: 'km',
-      condition: 'medium',
-      repairCost: 65,
-      description: 'Légères rayures visibles'
-    },
-    { 
-      id: 'rear-brake', 
-      x: 72, 
-      y: 60, 
-      name: 'Frein arrière',
-      currentUsage: 5500,
-      recommendedChange: 6000,
-      unit: 'km',
-      condition: 'warning',
-      repairCost: 65,
-      description: 'Usure importante détectée'
-    },
-    { 
-      id: 'chain', 
-      x: 50, 
-      y: 70, 
-      name: 'Chaîne',
-      currentUsage: 1800,
-      recommendedChange: 2500,
-      unit: 'km',
-      condition: 'medium',
-      repairCost: 120,
-      description: 'Usure normale de la chaîne'
-    },
-    { 
       id: 'cassette', 
-      x: 72, 
+      x: 75, 
       y: 55, 
-      name: 'Cassette',
+      name: 'Cassette Shimano Ultegra 11-28',
       currentUsage: 8500,
       recommendedChange: 10000,
       unit: 'km',
@@ -165,76 +94,28 @@ const BikeAnalysis: React.FC = () => {
       description: 'Cassette en excellent état'
     },
     { 
-      id: 'derailleur', 
-      x: 78, 
-      y: 65, 
-      name: 'Dérailleur arrière',
-      currentUsage: 7200,
-      recommendedChange: 12000,
-      unit: 'km',
-      condition: 'good',
-      repairCost: 250,
-      description: 'Dérailleur bien réglé'
-    },
-    { 
-      id: 'frame', 
-      x: 45, 
+      id: 'front-disc', 
+      x: 18, 
       y: 45, 
-      name: 'Cadre',
-      currentUsage: 8500,
-      recommendedChange: 50000,
+      name: 'Disque de frein avant SRAM',
+      currentUsage: 5200,
+      recommendedChange: 6000,
       unit: 'km',
-      condition: 'good',
-      repairCost: 0,
-      description: 'Cadre en parfait état'
+      condition: 'medium',
+      repairCost: 65,
+      description: 'Légères rayures visibles'
     },
     { 
-      id: 'seat-post', 
-      x: 63, 
-      y: 25, 
-      name: 'Tige de selle',
-      currentUsage: 8500,
-      recommendedChange: 20000,
+      id: 'rear-disc', 
+      x: 82, 
+      y: 45, 
+      name: 'Disque de frein arrière SRAM',
+      currentUsage: 5500,
+      recommendedChange: 6000,
       unit: 'km',
-      condition: 'good',
-      repairCost: 120,
-      description: 'Tige de selle sans problème'
-    },
-    { 
-      id: 'stem', 
-      x: 25, 
-      y: 25, 
-      name: 'Potence',
-      currentUsage: 8500,
-      recommendedChange: 20000,
-      unit: 'km',
-      condition: 'good',
-      repairCost: 80,
-      description: 'Potence bien serrée'
-    },
-    { 
-      id: 'fork', 
-      x: 15, 
-      y: 50, 
-      name: 'Fourche',
-      currentUsage: 7200,
-      recommendedChange: 15000,
-      unit: 'km',
-      condition: 'good',
-      repairCost: 300,
-      description: 'Fourche en bon état'
-    },
-    { 
-      id: 'pedals', 
-      x: 50, 
-      y: 78, 
-      name: 'Pédales',
-      currentUsage: 8200,
-      recommendedChange: 20000,
-      unit: 'km',
-      condition: 'good',
-      repairCost: 150,
-      description: 'Pédales fonctionnelles'
+      condition: 'warning',
+      repairCost: 65,
+      description: 'Usure importante détectée'
     }
   ]);
   
@@ -367,7 +248,7 @@ const BikeAnalysis: React.FC = () => {
           
           <div className="relative" style={{ paddingBottom: '56.25%' }}>
             <img 
-              src="/lovable-uploads/eab8939e-f868-43a4-ba84-2bc95c5a9d19.png" 
+              src="/lovable-uploads/1acc67b4-cd47-4ae0-a5d7-1978b804a520.png" 
               alt="Vélo Lapierre" 
               className="absolute inset-0 w-full h-full object-contain"
             />
@@ -377,11 +258,11 @@ const BikeAnalysis: React.FC = () => {
                 <Tooltip key={point.id}>
                   <TooltipTrigger asChild>
                     <button
-                      className={`absolute w-4 h-4 rounded-full border-2 border-white transform -translate-x-1/2 -translate-y-1/2 ${
+                      className={`absolute w-5 h-5 rounded-full border-2 border-white transform -translate-x-1/2 -translate-y-1/2 ${
                         selectedComponent === point.id 
-                          ? `${getConditionColor(point.condition)} scale-125 animate-pulse shadow-lg` 
+                          ? `${getConditionColor(point.condition)} scale-125 animate-pulse` 
                           : getConditionColor(point.condition)
-                      } hover:scale-110 transition-transform`}
+                      }`}
                       style={{ left: `${point.x}%`, top: `${point.y}%` }}
                       onClick={() => handleComponentClick(point.id)}
                     />
