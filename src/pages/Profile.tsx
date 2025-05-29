@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { User, Mail, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import MobileLayout from '../components/Layout/MobileLayout';
 import BikeCard from '../components/Bike/BikeCard';
 
@@ -148,9 +150,9 @@ const Profile = () => {
           </div>
         </div>
         
-        <button className="w-full bg-white text-amber-600 py-2 rounded-lg mt-4 font-medium">
+        <Link to="/premium" className="block w-full bg-white text-amber-600 py-2 rounded-lg mt-4 font-medium text-center">
           Upgrade Now
-        </button>
+        </Link>
       </div>
     </MobileLayout>
   );
