@@ -23,7 +23,8 @@ interface WorkshopMapProps {
 const WorkshopMap: React.FC<WorkshopMapProps> = ({ workshops, onSelectWorkshop }) => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
-  const markers = useRef<mapboxgl.Marker[]>([]);
+  const markers = useRef<{ marker: mapboxgl.Marker; id: string; element: HTMLDivElement }[]>([]);
+  const selectedWorkshopRef = useRef<string | null>(null);
   
   // Initialize the map when the component mounts
   useEffect(() => {
@@ -56,12 +57,43 @@ const WorkshopMap: React.FC<WorkshopMapProps> = ({ workshops, onSelectWorkshop }
     };
   }, []);
   
+  // Function to update marker colors based on selection
+  const updateMarkerColors = (selectedId: string | null) => {
+    markers.current.forEach(({ element, id }) => {
+      if (id === selectedId) {
+        element.style.backgroundColor = '#3b82f6'; // Blue color for selected
+      } else {
+        element.style.backgroundColor = 'var(--primary)'; // Default color
+      }
+    });
+  };
+  
+  // Function to handle workshop selection and zoom
+  const handleWorkshopSelect = (workshopId: string) => {
+    const workshop = workshops.find(w => w.id === workshopId);
+    if (workshop && workshop.coordinates && map.current) {
+      // Zoom to the selected workshop
+      map.current.flyTo({
+        center: workshop.coordinates,
+        zoom: 15,
+        duration: 1500
+      });
+      
+      // Update marker colors
+      selectedWorkshopRef.current = workshopId;
+      updateMarkerColors(workshopId);
+      
+      // Call the parent callback
+      onSelectWorkshop(workshopId);
+    }
+  };
+  
   // Add markers for each workshop
   const addMarkers = () => {
     if (!map.current) return;
     
     // Clear any existing markers
-    markers.current.forEach(marker => marker.remove());
+    markers.current.forEach(({ marker }) => marker.remove());
     markers.current = [];
     
     // Coordinates for workshops (mock data with Paris area coordinates)
@@ -92,6 +124,7 @@ const WorkshopMap: React.FC<WorkshopMapProps> = ({ workshops, onSelectWorkshop }
       el.style.cursor = 'pointer';
       el.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.3)';
       el.style.transform = 'translate(-50%, -50%)';
+      el.style.transition = 'background-color 0.3s ease';
       
       // Add map pin icon
       const iconElement = document.createElement('div');
@@ -105,10 +138,10 @@ const WorkshopMap: React.FC<WorkshopMapProps> = ({ workshops, onSelectWorkshop }
         
       // Add click event to marker
       el.addEventListener('click', () => {
-        onSelectWorkshop(workshop.id);
+        handleWorkshopSelect(workshop.id);
       });
       
-      markers.current.push(marker);
+      markers.current.push({ marker, id: workshop.id, element: el });
     });
     
     // Adjust the map to fit all markers if there are any
@@ -142,8 +175,8 @@ const WorkshopMap: React.FC<WorkshopMapProps> = ({ workshops, onSelectWorkshop }
         {workshops.map(workshop => (
           <div 
             key={workshop.id} 
-            className="workshop-card cursor-pointer bg-white p-4 rounded-lg shadow-sm border border-gray-100"
-            onClick={() => onSelectWorkshop(workshop.id)}
+            className="workshop-card cursor-pointer bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+            onClick={() => handleWorkshopSelect(workshop.id)}
           >
             <h3 className="font-medium">{workshop.name}</h3>
             <p className="text-sm text-gray-600 mt-1">{workshop.address}</p>
