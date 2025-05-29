@@ -61,9 +61,11 @@ const WorkshopMap: React.FC<WorkshopMapProps> = ({ workshops, onSelectWorkshop }
   const updateMarkerColors = (selectedId: string | null) => {
     markers.current.forEach(({ element, id }) => {
       if (id === selectedId) {
-        element.style.backgroundColor = '#3b82f6'; // Blue color for selected
+        element.style.backgroundColor = 'hsl(217, 90%, 25%)'; // Primary blue from CSS variables
+        element.style.transform = 'translate(-50%, -50%) scale(1.2)';
       } else {
-        element.style.backgroundColor = 'var(--primary)'; // Default color
+        element.style.backgroundColor = 'hsl(217, 90%, 25%)'; // Same blue for all markers
+        element.style.transform = 'translate(-50%, -50%) scale(1)';
       }
     });
   };
@@ -116,7 +118,7 @@ const WorkshopMap: React.FC<WorkshopMapProps> = ({ workshops, onSelectWorkshop }
       el.style.width = '30px';
       el.style.height = '30px';
       el.style.borderRadius = '50%';
-      el.style.backgroundColor = 'var(--primary)';
+      el.style.backgroundColor = 'hsl(217, 90%, 25%)'; // Primary blue from the site
       el.style.display = 'flex';
       el.style.justifyContent = 'center';
       el.style.alignItems = 'center';
@@ -124,7 +126,7 @@ const WorkshopMap: React.FC<WorkshopMapProps> = ({ workshops, onSelectWorkshop }
       el.style.cursor = 'pointer';
       el.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.3)';
       el.style.transform = 'translate(-50%, -50%)';
-      el.style.transition = 'background-color 0.3s ease';
+      el.style.transition = 'transform 0.3s ease, background-color 0.3s ease';
       
       // Add map pin icon
       const iconElement = document.createElement('div');
