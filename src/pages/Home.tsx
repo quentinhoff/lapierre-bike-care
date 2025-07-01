@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, ChevronRight, Bike, Bell } from 'lucide-react';
+import { Calendar, ChevronRight, Bike, Bell, Store } from 'lucide-react';
 import MobileLayout from '../components/Layout/MobileLayout';
 
 const Home = () => {
@@ -80,9 +80,17 @@ const Home = () => {
           <div className="bg-primary rounded-lg px-4 py-2">
             <span className="text-white font-bold text-lg">LAPIERRE CARE</span>
           </div>
-          <button className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm">
-            <Bell size={18} />
-          </button>
+          <div className="flex items-center space-x-2">
+            <Link 
+              to="/shop"
+              className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm hover:bg-gray-50 transition-colors"
+            >
+              <Store size={18} className="text-gray-700" />
+            </Link>
+            <button className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm">
+              <Bell size={18} />
+            </button>
+          </div>
         </div>
       </div>
 

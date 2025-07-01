@@ -22,6 +22,8 @@ import Settings from "./pages/Settings";
 import Premium from "./pages/Premium";
 import NotFound from "./pages/NotFound";
 import Planning from "./pages/Planning";
+import Shop from "./pages/Shop";
+import BikeShopDetail from "./pages/BikeShopDetail";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +49,8 @@ const App = () => (
             <Route path="/settings" element={<Settings />} />
             <Route path="/premium" element={<Premium />} />
             <Route path="/planning" element={<Planning />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/shop/bike/:id" element={<BikeShopDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
